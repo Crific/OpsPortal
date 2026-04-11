@@ -65,29 +65,29 @@ Build a web application where:
 
 ## 🛠️ Development Plan
 
-### Tuesday
+### 1
 - [ ] Set up database (SQLAlchemy)
 - [ ] Create User model
 - [ ] Create Request model
 - [ ] Run `db.create_all()`
 
-### Wednesday
+### 2
 - [ ] Build registration
 - [ ] Build login/logout
 - [ ] Implement sessions
 - [ ] Protect routes
 
-### Thursday
+### 3
 - [ ] Create request (form → DB)
 - [ ] Display requests
 - [ ] Edit + delete requests
 
-### Friday
+### 4
 - [ ] Add status updates
 - [ ] Improve UI
 - [ ] Fix bugs
 
-### Saturday
+### 5
 - [ ] Final polish
 - [ ] Clean code
 - [ ] Prepare for portfolio
