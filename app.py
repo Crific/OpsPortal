@@ -49,7 +49,7 @@ class User(db.Model):
     password = db.Column(db.String(200), nullable=False) # 200 for hash
     role = db.Column(db.String(20), default="user") 
 
-
+    # Human-readable string representation of the User object for debugging
     def __repr__(self):
         return f"<User {self.username}>"
 
