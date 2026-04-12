@@ -68,6 +68,7 @@ class Request(db.Model):
 
     def __repr__(self):
         return f"<Request {self.title}>"
+
 # Home route 
 @app.route("/")
 def home():

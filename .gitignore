@@ -1,5 +1,12 @@
+# Flask Environment
 venv/
 .venv/
 __pycache__/
 *.pyc
 .env
+
+# Database
+*.db
+
+# Flask instance folder
+instance/
