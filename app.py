@@ -5,7 +5,7 @@
 # Phase 1: Database Setup
 # - [x] Set up database (SQLAlchemy)
 # - [x] Create User model
-# - [ ] Create Request model
+# - [x] Create Request model
 # - [ ] Run db.create_all()
 
 # Phase 2: Authentication
@@ -53,6 +53,21 @@ class User(db.Model):
     def __repr__(self):
         return f"<User {self.username}>"
 
+# Request Class
+class Request(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) # Foreign key linking request to a specific user
+    title = db.Column(db.String(200), nullable=False)
+    body = db.Column(db.Text, nullable=False)
+
+    # Default workflow status (pending, in-progress, completed)
+    status = db.Column(db.String(30), default="pending", nullable=False) 
+    
+    # Priority level (low, medium, high)
+    priority = db.Column(db.String(10), default="low", nullable=False) # Sets Priority level - defaults to low
+
+    def __repr__(self):
+        return f"<Request {self.title}>"
 # Home route 
 @app.route("/")
 def home():
