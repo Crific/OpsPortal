@@ -6,7 +6,7 @@
 # - [x] Set up database (SQLAlchemy)
 # - [x] Create User model
 # - [x] Create Request model
-# - [ ] Run db.create_all()
+# - [x] Run db.create_all()
 
 # Phase 2: Authentication
 # - [ ] User registration
@@ -68,7 +68,7 @@ class Request(db.Model):
 
     def __repr__(self):
         return f"<Request {self.title}>"
-
+        
 # Home route 
 @app.route("/")
 def home():

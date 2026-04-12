@@ -66,10 +66,10 @@ Build a web application where:
 ## 🛠️ Development Plan
 
 ### 1
-- [ ] Set up database (SQLAlchemy)
-- [ ] Create User model
-- [ ] Create Request model
-- [ ] Run `db.create_all()`
+- [x] Set up database (SQLAlchemy)
+- [x] Create User model
+- [x] Create Request model
+- [x] Run `db.create_all()`
 
 ### 2
 - [ ] Build registration
