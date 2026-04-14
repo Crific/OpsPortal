@@ -9,7 +9,7 @@
 # - [x] Run db.create_all()
 
 # Phase 2: Authentication
-# - [ ] User registration
+# - [x] User registration
 # - [ ] User login (Flask-Login)
 # - [ ] Password hashing
 # - [ ] Protect routes
@@ -30,6 +30,9 @@
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+
+# Password Hashing
+from werkzeug.security import generate_password_hash 
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -80,9 +83,30 @@ def login():
     return render_template("login.html")
 
 # Registration Page
-@app.route("/register")
-def register():
+@app.route("/register", methods=["GET","POST"])
+def register():  
+   if request.method == 'POST':
+        # Handle form submission
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+
+        # Hash password
+        hashed_pw = generate_password_hash(password)
+
+        # Add new user to User object
+        new_user = User(username=username, email=email, password= hashed_pw)
+
+        # Add new User object to db
+        db.session.add(new_user)
+        db.session.commit()
+
+        # Route user back to login page
+        return redirect(url_for("login"))
+
     return render_template("register.html")
+
+
 
 # Run app only when executed directly
 if __name__ == "__main__":

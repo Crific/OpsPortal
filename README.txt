@@ -72,7 +72,7 @@ Build a web application where:
 - [x] Run `db.create_all()`
 
 ### 2
-- [ ] Build registration
+- [x] Build registration
 - [ ] Build login/logout
 - [ ] Implement sessions
 - [ ] Protect routes
