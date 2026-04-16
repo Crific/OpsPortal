@@ -11,7 +11,7 @@
 # Phase 2: Authentication
 # - [x] User registration
 # - [ ] User login (Flask-Login)
-# - [ ] Password hashing
+# - [x] Password hashing
 # - [ ] Protect routes
 
 # Phase 3: Core Features
@@ -28,11 +28,22 @@
 # Keep everything in app.py for now.
 # Refactor into folders (models, routes) later.
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 # Password Hashing
 from werkzeug.security import generate_password_hash 
+
+# Flask Authentication
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    login_user,
+    logout_user,
+    login_required,
+    current_user,
+)
+
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -41,11 +52,20 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+# Initializing a secret key for authentication
+app.config["SECRET_KEY"] = "dev-secret-key"
+
+# Initialize Flask-Login for user session management and authentication
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+
+
 # Initializing db
 db = SQLAlchemy(app)  
 
 # User class
-class User(db.Model):            
+class User(UserMixin, db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
