@@ -1,11 +1,11 @@
 # Operations Request Portal
 
-## 📌 Overview
+##  Overview
 Developed a full-stack operations request portal enabling internal task management with role-based access, request assignment, status tracking, and dashboard reporting using Flask, Python, and SQL.
 
 ---
 
-## 🎯 Project Goal
+##  Project Goal
 Build a web application where:
 - Users can submit and track requests
 - Operators/Admins can manage and update requests
@@ -13,7 +13,7 @@ Build a web application where:
 
 ---
 
-## 🚀 Core Features (MVP)
+##  Core Features (MVP)
 - [ ] User registration and login/logout  
 - [ ] Session-based authentication  
 - [ ] Create request (ticket)  
@@ -25,7 +25,7 @@ Build a web application where:
 
 ---
 
-## ⭐ Stretch Features (Optional)
+##  Stretch Features (Optional)
 - [ ] Role-based access (Admin, Operator, Viewer)  
 - [ ] Request assignment  
 - [ ] Priority levels  
@@ -34,7 +34,7 @@ Build a web application where:
 
 ---
 
-## 🗂️ Tech Stack
+##  Tech Stack
 - Backend: Flask (Python)  
 - Database: SQLite (SQLAlchemy)  
 - Frontend: HTML, CSS  
@@ -42,7 +42,7 @@ Build a web application where:
 
 ---
 
-## 🧠 Data Models
+##  Data Models
 
 ### User
 - id  
@@ -63,7 +63,7 @@ Build a web application where:
 
 ---
 
-## 🛠️ Development Plan
+## Development Plan
 
 ### 1
 - [x] Set up database (SQLAlchemy)
@@ -94,12 +94,19 @@ Build a web application where:
 
 ---
 
-## 🔐 Key Concepts Demonstrated
+##  Key Concepts Demonstrated
 - Authentication and session management  
 - CRUD operations  
 - Relational database design  
 - Role-based access (if implemented)  
 - Workflow/state management  
+
+##  Future Features
+
+- Admin approval workflow for role upgrades
+- Role request system (user → admin approval)
+- Email notifications for request updates
+- Dashboard analytics (request trends, load, etc.)
 
 ---
 
