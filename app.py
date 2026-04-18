@@ -132,8 +132,11 @@ def login():
             flash('Successfully logged in!')
 
             return redirect(url_for("home"))
+
         else:
-            return "Invalid credentials"
+            # Validation: if incorrect password
+            flash("Incorrect password, please try again.")
+            return redirect(url_for("login"))
 
     return render_template("login.html")
 
@@ -166,6 +169,8 @@ def register():
         return redirect(url_for("login"))
 
     return render_template("register.html")
+
+
 
 
 # Run app only when executed directly
