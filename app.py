@@ -145,6 +145,7 @@ def register():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        confirm = request.form['confirm']
 
         # Confirm password logic
         if password != confirm:
