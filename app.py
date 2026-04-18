@@ -28,7 +28,7 @@
 # Keep everything in app.py for now.
 # Refactor into folders (models, routes) later.
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 
 # Password Hashing
@@ -60,11 +60,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
-# User loader
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-    
 # Initializing db
 db = SQLAlchemy(app)  
 
@@ -79,6 +74,12 @@ class User(UserMixin, db.Model):
     # Human-readable string representation of the User object for debugging
     def __repr__(self):
         return f"<User {self.username}>"
+
+# User loader
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 # Request Class
 class Request(db.Model):
