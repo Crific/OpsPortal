@@ -4,6 +4,14 @@
     <div class="card">
         <h2>Register</h2>
 
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error">
+                {{ messages[0] }}
+                </div>
+            {% endif %}
+            {% endwith %}      
+              
         <form method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
