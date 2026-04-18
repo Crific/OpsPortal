@@ -101,7 +101,7 @@ class Request(db.Model):
 @app.route("/")
 @login_required
 def home():
-    return render_template("home.html") 
+    return render_template("home.html")
 
 # Login Page Route
 @app.route("/login", methods=["GET", "POST"])
@@ -140,7 +140,7 @@ def login():
 # Registration Page
 @app.route("/register", methods=["GET","POST"])
 def register():  
-   if request.method == 'POST':
+    if request.method == 'POST':
         # Handle form submission
         username = request.form['username']
         email = request.form['email']
@@ -150,7 +150,7 @@ def register():
         hashed_pw = generate_password_hash(password)
 
         # Add new user to User object
-        new_user = User(username=username, email=email, password= hashed_pw)
+        new_user = User(username=username, email=email, password=hashed_pw)
 
         # Add new User object to db
         db.session.add(new_user)
@@ -160,7 +160,6 @@ def register():
         return redirect(url_for("login"))
 
     return render_template("register.html")
-
 
 
 # Run app only when executed directly
