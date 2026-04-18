@@ -32,7 +32,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 # Password Hashing
-from werkzeug.security import generate_password_hash 
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Flask Authentication
 from flask_login import (
@@ -60,7 +60,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
-
+# User loader
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+    
 # Initializing db
 db = SQLAlchemy(app)  
 
@@ -98,8 +102,38 @@ def home():
     return render_template("home.html") 
 
 # Login Page Route
-@app.route("/login")
-def login():
+
+@app.route("/login", methods=["GET", "POST"])
+def login():   
+    # Login flow:
+    # 1. If POST → get form data (email, password) x 
+    # 2. Find user in database by email x
+    # 3. If user exists AND password is correct:
+    #       → log them in (login_user)
+    #       → redirect to home/dashboard
+    # 4. Else:
+    #       → show error (invalid credentials)
+    # 5. If GET → just render login page
+
+    if request.method == 'POST': 
+        # Get form data (email, password)
+        email = request.form['email']
+        password = request.form['password']
+
+        # Find user in database by email x
+        user = User.query.filter_by(email=email).first()
+
+        # If user exists AND password is correct:
+        # → log them in (login_user)
+        # → redirect to home/dashboard        
+        if user and check_password_hash(user.password, password):
+            login_user(user)
+            flash('Successfully logged in!')
+
+            return redirect(url_for("home"))
+        else:
+            return "Invalid credentials"
+
     return render_template("login.html")
 
 # Registration Page
