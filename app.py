@@ -146,6 +146,11 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
+        # Confirm password logic
+        if password != confirm:
+            flash("Passwords do not match")
+            return redirect(url_for("register"))
+
         # Hash password
         hashed_pw = generate_password_hash(password)
 
