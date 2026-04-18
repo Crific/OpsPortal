@@ -10,9 +10,9 @@
 
 # Phase 2: Authentication
 # - [x] User registration
-# - [ ] User login (Flask-Login)
+# - [x] User login (Flask-Login)
 # - [x] Password hashing
-# - [ ] Protect routes
+# - [x] Protect routes
 
 # Phase 3: Core Features
 # - [ ] Create request/ticket system
@@ -99,11 +99,11 @@ class Request(db.Model):
         
 # Home route 
 @app.route("/")
+@login_required
 def home():
     return render_template("home.html") 
 
 # Login Page Route
-
 @app.route("/login", methods=["GET", "POST"])
 def login():   
     # Login flow:

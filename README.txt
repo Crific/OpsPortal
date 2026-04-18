@@ -73,9 +73,9 @@ Build a web application where:
 
 ### 2
 - [x] Build registration
-- [ ] Build login/logout
-- [ ] Implement sessions
-- [ ] Protect routes
+- [x] Build login/logout
+- [x] Implement sessions
+- [x] Protect routes
 
 ### 3
 - [ ] Create request (form → DB)
