@@ -9,6 +9,10 @@
     <nav>
         <h2>OpsPortal</h2>
     </nav>
+    
+    <form action="{{ url_for('logout') }}" method="POST">
+    <button type="submit">Logout</button>
+    </form>
 
     <main>
         <h1>Welcome to OpsPortal</h1>

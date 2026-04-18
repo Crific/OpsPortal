@@ -129,8 +129,6 @@ def login():
         # → redirect to home/dashboard        
         if user and check_password_hash(user.password, password):
             login_user(user)
-            flash('Successfully logged in!')
-
             return redirect(url_for("home"))
 
         else:
@@ -139,6 +137,15 @@ def login():
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+# Logout User Route
+@app.route("/logout", methods=["POST"])
+@login_required
+def logout():
+    logout_user()
+    flash("Successfully logged out.")
+    return redirect(url_for("login"))
+
 
 # Registration Page
 @app.route("/register", methods=["GET","POST"])
