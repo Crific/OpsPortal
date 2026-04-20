@@ -1,22 +1,89 @@
+/* GLOBAL STYLES */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    background-color: #0b0b0b;
+    color: white;
 }
 
-nav {
-    background-color: #222;
-    color: white;
-    padding: 15px 20px;
+
+/* NAVBAR */
+.navbar {
+    background: #111;
+    border-bottom: 1px solid #222;
+    padding: 18px 30px;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
+.navbar h1 {
+    margin: 0;
+    font-size: 22px;
 }
 
-main {
-    padding: 40px;
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* BUTTONS */
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #e5e5e5;
+    color: black;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background: white;
+}
+
+
+/* PAGE LAYOUT */
+.page {
+    padding: 30px;
+}
+
+
+/* TILE GRID */
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 260px);
+    gap: 20px;
+    justify-content: start;
+}
+
+
+/* TILE CARD */
+.tile {
+    background: #111;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #1c1c1c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-height: 140px;
+}
+
+.tile:hover {
+    background: #151515;
+    transform: translateY(-2px);
+}
+
+.tile h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.tile p {
+    margin: 0;
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.4;
 }

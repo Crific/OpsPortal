@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>OpsPortal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ops Portal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <nav>
-        <h2>OpsPortal</h2>
-    </nav>
     
-    <form action="{{ url_for('logout') }}" method="POST">
-    <button type="submit">Logout</button>
-    </form>
+    <div class="navbar">
+        <h1>Ops Portal</h1>
 
-    <main>
-        <h1>Welcome to OpsPortal</h1>
-        <p>This is your operations dashboard.</p>
-    </main>
+        <div class="nav-actions">
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit">Sign Out</button>
+                </form>
+        </div>
+    </div>
+
+    
+    <div class="page">
+        <div class="tiles">
+
+            <div class="tile">
+                <h2>Dashboard</h2>
+                <p>View and manage your tickets.</p>
+            </div>
+
+
+        </div>
+    </div>
 
 </body>
 </html>
