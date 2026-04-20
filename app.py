@@ -16,7 +16,7 @@
 
 # Phase 3: Core Features
 # - [x] Create request/ticket system
-# - [ ] View requests
+# - [x] View requests
 # - [ ] Edit requests
 # - [ ] Assign requests (admin/operator)
 
@@ -181,7 +181,10 @@ def register():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    # Grabbing tickets from user and then displaying the status then displaying it on the respective user's dashboard
+    # using relationship formed in the model
+    tickets = current_user.requests
+    return render_template("dashboard.html", tickets=tickets)
 
 @app.route("/create", methods=["GET","POST"])
 @login_required

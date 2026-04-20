@@ -6,7 +6,15 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash">
+                {{ messages[0] }}
+                </div>
+            {% endif %}
+            {% endwith %}          
     <div class="page">
         <div class="card">
 
@@ -30,21 +38,14 @@
             <!-- SECTION -->
             <h2 class="section-title">My Tickets</h2>
 
-            <!-- STATIC (for now) -->
+            {% for ticket in tickets %}
             <div class="ticket-box">
-                <h3>Password Reset</h3>
-                <p>Status: Pending</p>
+                <h3>{{ ticket.title }}</h3>
+                <p>{{ ticket.body }}</p>
+                <p>Priority: {{ ticket.priority }}</p>
+                <p>Status: {{ ticket.status }}</p>
             </div>
-
-            <div class="ticket-box">
-                <h3>Access Request</h3>
-                <p>Status: In Progress</p>
-            </div>
-
-            <div class="ticket-box">
-                <h3>Laptop Issue</h3>
-                <p>Status: Completed</p>
-            </div>
+            {% endfor %}
 
         </div>
     </div>
