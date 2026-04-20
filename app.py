@@ -182,6 +182,11 @@ def register():
 def dashboard():
     return render_template("dashboard.html")
 
+@app.route("/create")
+@login_required
+def create_ticket():
+    return render_template("create_ticket.html")
+
 
 # Run app only when executed directly
 if __name__ == "__main__":

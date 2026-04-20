@@ -15,8 +15,10 @@
                 <h1>Ticket Console</h1>
 
                 <div style="display: flex; gap: 10px;">
-                    
+
+                        <a href="{{ url_for('create_ticket') }}">
                         <button type="button">+ Create Ticket</button>
+                        </a>
                     
 
                     <form action="{{ url_for('logout') }}" method="POST">
