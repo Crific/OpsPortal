@@ -15,7 +15,7 @@
 # - [x] Protect routes
 
 # Phase 3: Core Features
-# - [ ] Create request/ticket system
+# - [x] Create request/ticket system
 # - [ ] View requests
 # - [ ] Edit requests
 # - [ ] Assign requests (admin/operator)
@@ -85,6 +85,7 @@ def load_user(user_id):
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) # Foreign key linking request to a specific user
+    user = db.relationship("User", backref="requests") # forming a relationship between User model and Requests
     title = db.Column(db.String(200), nullable=False)
     body = db.Column(db.Text, nullable=False)
 
@@ -182,9 +183,34 @@ def register():
 def dashboard():
     return render_template("dashboard.html")
 
-@app.route("/create")
+@app.route("/create", methods=["GET","POST"])
 @login_required
 def create_ticket():
+    # Check if form was submitted
+    # Get title, body, and other ticket fields from form ()
+    # Create a new ticket/request object
+    # Set the ticket's user to the currently logged-in user
+    # Save the ticket to the database
+    # Redirect user or show success message
+    if request.method == 'POST':
+        # get form data
+        # user = current_user
+        # user_id = user.id
+        # create ticket using that id
+        user = current_user
+        user_id = user.id
+        title = request.form['title']
+        body = request.form['body']
+        priority = request.form['priority']
+
+        new_ticket = Request(user=user, user_id=user_id, title=title, body=body, priority=priority)
+
+        db.session.add(new_ticket)
+        db.session.commit()
+
+        return redirect(url_for("dashboard"))
+
+
     return render_template("create_ticket.html")
 
 
