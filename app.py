@@ -177,7 +177,10 @@ def register():
 
     return render_template("register.html")
 
-
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    return render_template("dashboard.html")
 
 
 # Run app only when executed directly
