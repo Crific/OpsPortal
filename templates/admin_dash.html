@@ -20,43 +20,38 @@
 
 
             <!-- TOPBAR -->
-            <div class="topbar">
-                <h1>Admin Ticket Console</h1>
-                            <div class="topbar">
-                <h1>Edit Ticket</h1>
+        <div class="topbar">
+            <h1>Admin Ticket Console</h1>
 
-                <a href="{{ url_for('home') }}">
-                    <button type="button">Back</button>
+            <div style="display: flex; gap: 10px;">
+                <a href="{{ url_for('create_ticket') }}">
+                    <button type="button">+ Create Ticket</button>
                 </a>
+
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit">Sign Out</button>
+                </form>
             </div>
+        </div>
 
-                <div style="display: flex; gap: 10px;">
+        <h2 class="section-title">All Tickets</h2>
 
-                        <a href="{{ url_for('create_ticket') }}">
-                        <button type="button">+ Create Ticket</button>
-                        </a>
-                    
+        {% for ticket in tickets %}
+        <div class="ticket-box">
+            <h3>{{ ticket.title }}</h3>
+            <p>{{ ticket.body }}</p>
 
-                    <form action="{{ url_for('logout') }}" method="POST">
-                        <button type="submit">Sign Out</button>
-                    </form>
-                </div>
-            </div>
+            <p><strong>User:</strong> {{ ticket.author.username }}</p>
+            <p><strong>Email:</strong> {{ ticket.author.email }}</p>
 
-            <!-- SECTION -->
-            <h2 class="section-title">My Tickets</h2>
+            <p>Priority: {{ ticket.priority }}</p>
+            <p>Status: {{ ticket.status }}</p>
 
-            {% for ticket in tickets %}
-            <div class="ticket-box">
-                <h3>{{ ticket.title }}</h3>
-                <p>{{ ticket.body }}</p>
-                <p>Priority: {{ ticket.priority }}</p>
-                <p>Status: {{ ticket.status }}</p>
-                <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}">
+            <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}">
                 <button type="button">Edit</button>
-                </a>
-            </div>
-            {% endfor %}
+            </a>
+        </div>
+        {% endfor %}
 
         </div>
     </div>
