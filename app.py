@@ -28,7 +28,7 @@
 # Keep everything in app.py for now.
 # Refactor into folders (models, routes) later.
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 
 # Password Hashing

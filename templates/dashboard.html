@@ -44,6 +44,9 @@
                 <p>{{ ticket.body }}</p>
                 <p>Priority: {{ ticket.priority }}</p>
                 <p>Status: {{ ticket.status }}</p>
+                <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}">
+                <button type="button">Edit</button>
+                </a>
             </div>
             {% endfor %}
 
