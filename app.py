@@ -211,7 +211,7 @@ def create_ticket():
         body = request.form['body']
         priority = request.form['priority']
 
-        new_ticket = Request(user=user, user_id=user_id, title=title, body=body, priority=priority)
+        new_ticket = Request(user_id=user_id, title=title, body=body, priority=priority)
 
         db.session.add(new_ticket)
         db.session.commit()
