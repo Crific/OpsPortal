@@ -17,7 +17,7 @@
 # Phase 3: Core Features
 # - [x] Create request/ticket system
 # - [x] View requests
-# - [ ] Edit requests
+# - [x] Edit requests
 # - [ ] Assign requests (admin/operator)
 
 # Phase 4: Dashboard
@@ -70,6 +70,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False) # 200 for hash
     role = db.Column(db.String(20), default="user") 
+    requests = db.relationship("Request", backref="author", lazy=True)
 
     # Human-readable string representation of the User object for debugging
     def __repr__(self):
@@ -84,8 +85,7 @@ def load_user(user_id):
 # Request Class
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) # Foreign key linking request to a specific user
-    user = db.relationship("User", backref="requests") # forming a relationship between User model and Requests
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) # Foreign key linking request to a specific user # forming a relationship between User model and Requests
     title = db.Column(db.String(200), nullable=False)
     body = db.Column(db.Text, nullable=False)
 
@@ -181,10 +181,16 @@ def register():
 @app.route("/dashboard")
 @login_required
 def dashboard():
+
+    # Checks if user is admin role and directs them to respective dashboards
+    if current_user.role == "admin":
+        return redirect(url_for("admin_dashboard"))
+
     # Grabbing tickets from user and then displaying the status then displaying it on the respective user's dashboard
     # using relationship formed in the model
-    tickets = current_user.requests
-    return render_template("dashboard.html", tickets=tickets)
+    else:
+        tickets = current_user.requests
+        return render_template("dashboard.html", tickets=tickets)
 
 @app.route("/create", methods=["GET","POST"])
 @login_required
@@ -258,7 +264,30 @@ def edit_ticket(ticket_id):
         # so user can see and modify what they already wrote
         return render_template("edit_ticket.html", current_ticket=current_ticket)
 
+@app.route("/admin")
+@login_required
+# Pseudocode: 
+# Define route "/admin" x 
+# Require user to be logged in x
+# Check if current user is NOT an admin
+# If not admin:
+#     return unauthorized error (403)
+# Query all tickets from the database
+# Sort tickets by newest first
+# Render the admin dashboard template
+# Pass tickets into the template
+def admin_dashboard():
+    if current_user.role != "admin":
+        abort(403)
     
+    else: 
+    # Get all tickets, newest first
+    tickets = Request.query.order_by(Request.id.desc()).all()
+
+    # Render admin dashboard
+    return render_template("admin_dash.html", tickets=tickets)
+
+
 
 
 # Run app only when executed directly
