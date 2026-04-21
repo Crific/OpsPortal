@@ -279,8 +279,7 @@ def edit_ticket(ticket_id):
 def admin_dashboard():
     if current_user.role != "admin":
         abort(403)
-    
-    else: 
+
     # Get all tickets, newest first
     tickets = Request.query.order_by(Request.id.desc()).all()
 
