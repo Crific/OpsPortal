@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Ticket View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="page">
+        <div class="card">
+            <div class="topbar">
+                <h1>Ticket Details</h1>
+
+                <a href="{{ url_for('admin_dashboard') }}">
+                    <button type="button">Back</button>
+                </a>
+            </div>
+
+            <div class="ticket-box">
+                <h2>{{ current_ticket.title }}</h2>
+                <p><strong>Description:</strong> {{ current_ticket.body }}</p>
+                <p><strong>Priority:</strong> {{ current_ticket.priority }}</p>
+                <p><strong>Submitted by:</strong> {{ current_ticket.author.username }}</p>
+                <p><strong>Email:</strong> {{ current_ticket.author.email }}</p>
+                <p><strong>Current Status:</strong> {{ current_ticket.status }}</p>
+
+                <form method="POST" action="{{ url_for('update_status', ticket_id=current_ticket.id) }}">
+                    <label for="status">Update Status</label>
+
+                    <select name="status" id="status">
+                        <option value="pending" {{ 'selected' if current_ticket.status == 'pending' else '' }}>
+                            Pending
+                        </option>
+                        <option value="in-progress" {{ 'selected' if current_ticket.status == 'in-progress' else '' }}>
+                            In Progress
+                        </option>
+                        <option value="completed" {{ 'selected' if current_ticket.status == 'completed' else '' }}>
+                            Completed
+                        </option>
+                    </select>
+                
+
+                    <button type="submit">Update Status</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

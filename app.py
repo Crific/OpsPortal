@@ -237,7 +237,7 @@ def edit_ticket(ticket_id):
         return redirect(url_for("dashboard"))
 
     #  check if this ticket belongs to the current user
-    if current_ticket.user_id != current_user.id:
+    if current_ticket.user_id != current_user.id and current_user.role != "admin":
         abort(403) # Raise forbidden exception
         
     # if not → block access (don’t allow editing other users’ tickets)
@@ -286,7 +286,20 @@ def admin_dashboard():
     # Render admin dashboard
     return render_template("admin_dash.html", tickets=tickets)
 
+@app.route("/update_status/<int:ticket_id>", methods=["POST"])
+@login_required
+def update_status(ticket_id):
+    if current_user.role != "admin":
+        abort(403)
 
+    current_ticket = Request.query.get(ticket_id)
+    new_status = request.form["status"]
+
+    current_ticket.status = new_status
+    db.session.commit()
+
+    flash("Ticket status updated successfully.")
+    return redirect(url_for("admin_view", ticket_id=ticket_id))
 
 
 # Run app only when executed directly
