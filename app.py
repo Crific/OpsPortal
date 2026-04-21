@@ -292,14 +292,27 @@ def update_status(ticket_id):
     if current_user.role != "admin":
         abort(403)
 
+    # Points to ticket of choice
+    # Allows admin to change the status of the ticket
     current_ticket = Request.query.get(ticket_id)
     new_status = request.form["status"]
 
+    # Update ticket
     current_ticket.status = new_status
     db.session.commit()
 
     flash("Ticket status updated successfully.")
     return redirect(url_for("admin_view", ticket_id=ticket_id))
+
+# Full admin ticket view 
+@app.route("/view/<int:ticket_id>")
+@login_required
+def admin_view(ticket_id):
+    if current_user.role != "admin":
+        abort(403)
+
+    current_ticket = Request.query.get(ticket_id)
+    return render_template("admin_ticket.html", current_ticket=current_ticket)
 
 
 # Run app only when executed directly

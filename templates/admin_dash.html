@@ -46,7 +46,7 @@
             <p>Priority: {{ ticket.priority }}</p>
             <p>Status: {{ ticket.status }}</p>
 
-            <a href="{{ url_for('update_status', ticket_id=ticket.id) }}">
+            <a href="{{ url_for('admin_view', ticket_id=ticket.id) }}">
                 <button type="button">See More</button>
             </a>
 
