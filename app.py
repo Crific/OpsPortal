@@ -196,7 +196,6 @@ def create_ticket():
     # Save the ticket to the database
     # Redirect user or show success message
     if request.method == 'POST':
-        # get form data
         # user = current_user
         # user_id = user.id
         # create ticket using that id
@@ -215,6 +214,51 @@ def create_ticket():
 
 
     return render_template("create_ticket.html")
+
+
+# Edit Ticket Flow
+# user clicks edit on a ticket → we get that specific ticket id
+@app.route("/edit/<int:ticket_id>", methods=["GET", "POST"])
+@login_required
+def edit_ticket(ticket_id): 
+    # grab the ticket from the database using the id
+    # make sure the ticket actually exists
+    # if not → redirect or handle error
+    current_ticket = Request.query.get(ticket_id)
+
+    if not current_ticket:
+        flash("Ticket not found.")
+        return redirect(url_for("dashboard"))
+
+    #  check if this ticket belongs to the current user
+    if current_ticket.user_id != current_user.id:
+        abort(403) # Raise forbidden exception
+        
+    # if not → block access (don’t allow editing other users’ tickets)
+    if request.method == "POST":
+        # get updated values from the form
+        # title, body, priority
+        # update the ticket with new values
+        # (overwrite old data, not creating a new ticket)
+        current_ticket.title = request.form["title"]
+        current_ticket.body = request.form["body"]
+        current_ticket.priority = request.form["priority"]
+
+        # save changes to database (commit)
+        db.session.commit()
+        # redirect back to dashboard
+        flash("Ticket successfully edited.")
+        return redirect(url_for("dashboard"))
+
+    else:
+        # user just opened the edit page
+
+        # render the edit form
+        # pre-fill fields with existing ticket data
+        # so user can see and modify what they already wrote
+        return render_template("edit_ticket.html", current_ticket=current_ticket)
+
+    
 
 
 # Run app only when executed directly
