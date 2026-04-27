@@ -1,8 +1,24 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #0b0b0b;
-    color: white;
+    background-color: #F4F6F8;;  
+    color: #343434;            
+}
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin: 0;
+  margin-bottom: 25px; 
+  text-align: center;
+  color: #049FD9;
+}
+
+.title {
+    font-size: 1.0rem;
+    text-align: center;
+    color: #343434;  
 }
 
 .container {
@@ -10,12 +26,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-
     padding: 20px;
 }
 
 .card {
-    background: #111;
+    background: #FFFFFF;
     padding: 30px;
     border-radius: 10px;
     width: 300px;
@@ -26,11 +41,12 @@ body {
 
 .form-group {
     margin-bottom: 15px;
+
 }
 
 label {
     font-size: 14px;
-    color: #ccc;
+    color: #343434;  
 }
 
 input {
@@ -39,8 +55,8 @@ input {
     margin-top: 6px;
     border-radius: 6px;
     border: 1px solid #333;
-    background: #0b0b0b;
-    color: white;
+    background: #f1f1f1;
+    color: #343434; 
 }
 
 
@@ -55,15 +71,15 @@ button {
     padding: 10px;
     border: none;
     border-radius: 6px;
-    background: #e5e5e5;
-    color: black;
+    background: #049FD9;
+    color: white;
     cursor: pointer;
 
     transition: 0.2s ease;
 }
 
 button:hover {
-    background: white;
+    background: #0288c7;
 }
 
 
@@ -71,11 +87,11 @@ button:hover {
     text-align: center;
     margin-top: 15px;
     font-size: 14px;
-    color: #aaa;
+    color: #666;
 }
 
 .auth-link a {
-    color: white;
+    color: #049FD9;
     text-decoration: none;
 }
 
@@ -84,8 +100,8 @@ button:hover {
 }
 
 .error {
-    background: #2a0f0f;
-    color: #ff6b6b;
+    background: #ffecec;
+    color: #c0392b;
     padding: 10px;
     border-radius: 6px;
     margin-bottom: 15px;

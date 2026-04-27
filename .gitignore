@@ -10,3 +10,6 @@ __pycache__/
 
 # Flask instance folder
 instance/
+
+# UI prototype / testing folder
+ui-prototype/

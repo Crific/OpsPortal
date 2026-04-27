@@ -1,21 +1,36 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TicketFlow</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+
+<body>
 
 <div class="container">
     <div class="card">
-        <h2>Login</h2>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="error">
+        <h2 class="logo">TicketFlow</h2>
+    
+        <h1 class="title">Login</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="error">
                 {{ messages[0] }}
-                </div>
-            {% endif %}
-            {% endwith %}      
+            </div>
+        {% endif %}
+        {% endwith %}      
               
         <form method="POST">
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" name="email" placeholder="JohnDoe@example.com" required>
             </div>
+
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" placeholder="Enter your password" required>
@@ -23,8 +38,13 @@
 
             <button type="submit">Login</button>
         </form>
-         <p class="auth-link">
-            Don’t have an account? <a href="{{ url_for('register') }}">Register</a>
+
+        <p class="auth-link">
+            Don’t have an account? 
+            <a href="{{ url_for('register') }}">Register</a>
         </p>
     </div>
 </div>
+
+</body>
+</html>
