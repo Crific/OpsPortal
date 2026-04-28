@@ -147,8 +147,7 @@ def register():
             flash("Email already exists.")
             return redirect(url_for("register"))
 
-        hashed_pw = generate_password_hash(password)
-
+        hashed_pw = generate_password_hash(password, method="pbkdf2:sha256")
         new_user = User(
             username=username,
             email=email,
