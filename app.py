@@ -108,7 +108,7 @@ def login():
             login_user(user)
             return redirect(url_for("home"))
 
-        flash("Invalid email or password.")
+        flash("Invalid email or password.", "error")
         return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -118,7 +118,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("Successfully logged out.")
+    flash("Successfully logged out.", "success")
     return redirect(url_for("login"))
 
 
@@ -132,7 +132,7 @@ def register():
 
         # Make sure password and confirmation match
         if password != confirm:
-            flash("Passwords do not match.")
+            flash("Passwords do not match.", "error")
             return redirect(url_for("register"))
 
         # Prevent duplicate accounts
@@ -140,11 +140,11 @@ def register():
         existing_email = User.query.filter_by(email=email).first()
 
         if existing_username:
-            flash("Username already exists.")
+            flash("Username already exists.", "error")
             return redirect(url_for("register"))
 
         if existing_email:
-            flash("Email already exists.")
+            flash("Email already exists.", "error")
             return redirect(url_for("register"))
 
         hashed_pw = generate_password_hash(password, method="pbkdf2:sha256")
@@ -157,7 +157,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        flash("Account created successfully. Please log in.")
+        flash("Account created successfully. Please log in.", "success")
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -197,7 +197,7 @@ def create_ticket():
         db.session.add(new_ticket)
         db.session.commit()
 
-        flash("Ticket created successfully.")
+        flash("Ticket created successfully.", "success")
         return redirect(url_for("dashboard"))
 
     return render_template("create_ticket.html")
@@ -218,7 +218,7 @@ def edit_ticket(ticket_id):
         current_ticket.priority = request.form["priority"]
 
         db.session.commit()
-        flash("Ticket successfully edited.")
+        flash("Ticket successfully edited.", "success")
         return redirect(url_for("dashboard"))
 
     return render_template("edit_ticket.html", current_ticket=current_ticket)
@@ -261,7 +261,7 @@ def update_status(ticket_id):
 
     db.session.commit()
 
-    flash("Ticket status updated successfully.")
+    flash("Ticket status updated successfully.", "success")
     return redirect(url_for("admin_view", ticket_id=ticket_id))
 
 

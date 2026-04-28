@@ -108,3 +108,12 @@ button:hover {
     margin-bottom: 15px;
     font-size: 14px;
 }
+
+.success {
+    background: #e6f9ec;
+    color: #1e7e34;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
