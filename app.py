@@ -90,6 +90,11 @@ def load_user(user_id):
 def home():
     return render_template("home.html")
 
+@app.route("/profile")
+@login_required
+def profile():
+    return render_template("profile.html")
+
 
 # =========================
 # Authentication Routes
