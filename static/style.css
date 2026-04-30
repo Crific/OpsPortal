@@ -34,6 +34,24 @@ body {
     gap: 10px;
 }
 
+.error {
+    background: #ffecec;
+    color: #c0392b;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.success {
+    background: #e6f9ec;
+    color: #1e7e34;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
 
 button {
     padding: 10px 16px;
@@ -102,4 +120,98 @@ button:hover {
 
 .tile a:hover {
     text-decoration: underline;
+}
+
+.dashboard-card {
+    background: #FFFFFF;
+    border: 1px solid #d9e2ec;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    margin: 0 0 8px 0;
+    color: #343434;
+}
+
+.dashboard-header p {
+    margin: 0;
+    color: #666;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    color: #343434;
+}
+
+.ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ticket-card {
+    background: #F9FBFC;
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.ticket-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.ticket-card p {
+    margin: 6px 0;
+    color: #555;
+}
+
+.ticket-meta {
+    margin: 15px 0;
+}
+
+
+.dashboard-page .btn-dash-primary,
+.dashboard-page .btn-dash-secondary {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+.dashboard-page .btn-dash-primary {
+    background: #049FD9;
+    color: white;
+}
+
+.dashboard-page .btn-dash-primary:hover {
+    background: #0288c7;
+}
+
+
+.dashboard-page .btn-dash-secondary {
+    background: #e5e5e5;
+    color: #333;
+}
+
+.dashboard-page .btn-dash-secondary:hover {
+    background: #d6d6d6;
 }

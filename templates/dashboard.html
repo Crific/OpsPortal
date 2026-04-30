@@ -7,58 +7,74 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash">
-                {{ messages[0] }}
+<body class="dashboard-page">
+
+
+    <div class="navbar">
+        <h1 class="logo">TicketFlow</h1>
+
+        <div class="nav-actions">
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit">Sign Out</button>
+            </form>
+        </div>
+    </div>
+
+  
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }}">
+                    {{ message }}
                 </div>
-            {% endif %}
-            {% endwith %}          
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <div class="page">
-        <div class="card">
 
 
-            <!-- TOPBAR -->
-            <div class="topbar">
-                <h1>Ticket Console</h1>
-                            <div class="topbar">
-                <h1>Edit Ticket</h1>
+        <div class="dashboard-card">
 
-                <a href="{{ url_for('home') }}">
-                    <button type="button">Back</button>
+
+            <div class="dashboard-actions">
+                <a href="{{ url_for('home') }}" class="btn-dash-secondary">
+                    ← Back
+                </a>
+
+                <a href="{{ url_for('create_ticket') }}" class="btn-dash-primary">
+                    + Create Ticket
                 </a>
             </div>
 
-                <div style="display: flex; gap: 10px;">
-
-                        <a href="{{ url_for('create_ticket') }}">
-                        <button type="button">+ Create Ticket</button>
-                        </a>
-                    
-
-                    <form action="{{ url_for('logout') }}" method="POST">
-                        <button type="submit">Sign Out</button>
-                    </form>
-                </div>
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Welcome to your dashboard. Your requested tickets will appear here.</p>
             </div>
 
-            <!-- SECTION -->
+
             <h2 class="section-title">My Tickets</h2>
 
-            {% for ticket in tickets %}
-            <div class="ticket-box">
-                <h3>{{ ticket.title }}</h3>
-                <p>{{ ticket.body }}</p>
-                <p>Priority: {{ ticket.priority }}</p>
-                <p>Status: {{ ticket.status }}</p>
-                <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}">
-                <button type="button">Edit</button>
-                </a>
+            <div class="ticket-list">
+                {% for ticket in tickets %}
+                    <div class="ticket-card">
+                        <h3>{{ ticket.title }}</h3>
+                        <p>{{ ticket.body }}</p>
+
+                        <div class="ticket-meta">
+                            <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+                            <p><strong>Status:</strong> {{ ticket.status }}</p>
+                        </div>
+
+                        <a href="{{ url_for('edit_ticket', ticket_id=ticket.id) }}" class="btn-dash-secondary">
+                            Edit
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
 
         </div>
     </div>
+
 </body>
 </html>
