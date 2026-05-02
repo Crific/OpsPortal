@@ -228,6 +228,18 @@ def edit_ticket(ticket_id):
 
     return render_template("edit_ticket.html", current_ticket=current_ticket)
 
+@app.route("/delete/<int:ticket_id>", methods=["POST"])
+@login_required
+def delete_ticket(ticket_id):
+    current_ticket = Request.query.get_or_404(ticket_id)
+
+    db.session.delete(current_ticket)
+    db.session.commit()
+    flash("Ticket deleted successfully.", "success")
+    return redirect(url_for("dashboard"))
+    
+
+
 
 # =========================
 # Admin Routes

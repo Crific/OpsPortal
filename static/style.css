@@ -186,7 +186,7 @@ button:hover {
 
 
 .dashboard-page .btn-dash-primary,
-.dashboard-page .btn-dash-secondary {
+.dashboard-page .btn-dash-secondary{
     display: inline-block;
     padding: 10px 16px;
     border-radius: 6px;
@@ -214,4 +214,46 @@ button:hover {
 
 .dashboard-page .btn-dash-secondary:hover {
     background: #d6d6d6;
+}
+
+
+
+.dashboard-page .btn-dash-delete {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: none;
+    background: #B22222;
+    color: white;
+}
+
+.dashboard-page .btn-dash-delete:hover {
+    background: #D93636;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.ticket-actions form {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-dash-secondary,
+.btn-dash-delete {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
 }
