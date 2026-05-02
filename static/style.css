@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,27 +6,23 @@ body {
 }
 
 .logo {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  margin: 0;
-  color: #049FD9;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: #049FD9;
 }
-
 
 .navbar {
     background: #FFFFFF;
     border-bottom: 1px solid #d9e2ec;
     padding: 18px 30px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
-
 
 .nav-actions {
     display: flex;
@@ -52,7 +47,6 @@ body {
     font-size: 14px;
 }
 
-
 button {
     padding: 10px 16px;
     border: none;
@@ -67,11 +61,9 @@ button:hover {
     background: #0288c7;
 }
 
-
 .page {
     padding: 30px;
 }
-
 
 .tiles {
     display: grid;
@@ -79,7 +71,6 @@ button:hover {
     gap: 20px;
     justify-content: start;
 }
-
 
 .tile {
     background: #FFFFFF;
@@ -102,7 +93,6 @@ button:hover {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 18px;
-    color: #343434;
 }
 
 .tile p {
@@ -115,7 +105,7 @@ button:hover {
 .tile a {
     color: #049FD9;
     text-decoration: none;
-    margin-top:auto;
+    margin-top: auto;
 }
 
 .tile a:hover {
@@ -144,7 +134,6 @@ button:hover {
 
 .dashboard-header h1 {
     margin: 0 0 8px 0;
-    color: #343434;
 }
 
 .dashboard-header p {
@@ -154,7 +143,6 @@ button:hover {
 
 .section-title {
     margin-bottom: 15px;
-    color: #343434;
 }
 
 .ticket-list {
@@ -172,7 +160,6 @@ button:hover {
 
 .ticket-card h3 {
     margin-top: 0;
-    margin-bottom: 10px;
 }
 
 .ticket-card p {
@@ -182,55 +169,6 @@ button:hover {
 
 .ticket-meta {
     margin: 15px 0;
-}
-
-
-.dashboard-page .btn-dash-primary,
-.dashboard-page .btn-dash-secondary{
-    display: inline-block;
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-
-.dashboard-page .btn-dash-primary {
-    background: #049FD9;
-    color: white;
-}
-
-.dashboard-page .btn-dash-primary:hover {
-    background: #0288c7;
-}
-
-
-.dashboard-page .btn-dash-secondary {
-    background: #e5e5e5;
-    color: #333;
-}
-
-.dashboard-page .btn-dash-secondary:hover {
-    background: #d6d6d6;
-}
-
-
-
-.dashboard-page .btn-dash-delete {
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    border: none;
-    background: #B22222;
-    color: white;
-}
-
-.dashboard-page .btn-dash-delete:hover {
-    background: #D93636;
 }
 
 .ticket-actions {
@@ -245,15 +183,96 @@ button:hover {
     padding: 0;
 }
 
-.btn-dash-secondary,
-.btn-dash-delete {
+.dashboard-page .btn-dash-primary,
+.dashboard-page .btn-dash-secondary,
+.dashboard-page .btn-dash-delete,
+.create-ticket-page .btn-dash-primary,
+.create-ticket-page .btn-dash-secondary {
     display: inline-block;
     padding: 10px 16px;
     border-radius: 6px;
     font-size: 14px;
-    line-height: 1;
-    border: none;
     text-decoration: none;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+.dashboard-page .btn-dash-primary {
+    background: #049FD9;
+    color: white;
+}
+
+.dashboard-page .btn-dash-primary:hover {
+    background: #0288c7;
+}
+
+.dashboard-page .btn-dash-secondary {
+    background: #e5e5e5;
+    color: #333;
+}
+
+.dashboard-page .btn-dash-secondary:hover {
+    background: #d6d6d6;
+}
+
+.dashboard-page .btn-dash-delete {
+    background: #B22222;
+    color: white;
+    border: none;
+}
+
+.dashboard-page .btn-dash-delete:hover {
+    background: #D93636;
+}
+
+.create-ticket-page .ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.create-ticket-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.create-ticket-page .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.create-ticket-page .form-group input,
+.create-ticket-page .form-group textarea,
+.create-ticket-page .form-group select {
+    padding: 10px;
+    border: 1px solid #d9e2ec;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.create-ticket-page .form-group input:focus,
+.create-ticket-page .form-group textarea:focus,
+.create-ticket-page .form-group select:focus {
+    outline: none;
+    border-color: #049FD9;
+}
+
+
+.create-ticket-page .btn-dash-primary {
+    background: #049FD9;
+    color: white;
+}
+
+.create-ticket-page .btn-dash-primary:hover {
+    background: #0288c7;
+}
+
+.create-ticket-page .btn-dash-secondary {
+    background: #e5e5e5;
+    color: #333;
+}
+
+.create-ticket-page .btn-dash-secondary:hover {
+    background: #d6d6d6;
 }
