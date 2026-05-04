@@ -6,22 +6,35 @@
     <title>Edit Ticket</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+
+<body class="create-ticket-page">
+
+    <div class="navbar">
+        <h1 class="logo">TicketFlow</h1>
+
+        <div class="nav-actions">
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit">Sign Out</button>
+            </form>
+        </div>
+    </div>
 
     <div class="page">
-        <div class="card">
 
-            <!-- TOPBAR -->
-            <div class="topbar">
-                <h1>Edit Ticket</h1>
+        <div class="dashboard-card">
 
-                <a href="{{ url_for('dashboard') }}">
-                    <button type="button">Back</button>
+            <div class="dashboard-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn-dash-secondary">
+                    ← Back
                 </a>
             </div>
 
-            <!-- FORM -->
-            <form method="POST">
+            <div class="dashboard-header">
+                <h1>Edit Ticket</h1>
+                <p>Update your existing ticket details.</p>
+            </div>
+
+            <form method="POST" class="ticket-form">
 
                 <div class="form-group">
                     <label>Title</label>
@@ -42,11 +55,14 @@
                     </select>
                 </div>
 
-                <button type="submit">Update Ticket</button>
+                <button type="submit" class="btn-dash-primary">
+                    Update Ticket
+                </button>
 
             </form>
 
         </div>
+
     </div>
 
 </body>
